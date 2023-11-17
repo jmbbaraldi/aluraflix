@@ -16,6 +16,16 @@ var filmesPosters = ["https://br.web.img2.acsta.net/r_1280_720/img/86/51/86513ed
 var filmesNomes = ["Clube da Luta", "Django Livre", "Superbad", "O Jogo da Imitação", "Truque de Mestre", "O Lobo de Wallstreet",
 "O Código Da Vinci", "Harry Potter", "Interstellar", "Oppenheimer", "Senhor dos Anéis", "Batman", "Blade Runner 2049", "Cãos de Guerra"]
 
+document.getElementById("enviar").addEventListener("click", function() {
+  var filme = document.getElementById("inputTitulo").value;
+  var link = document.getElementById("inputLink").value;
+
+  filmesPosters.push(link);
+  filmesNomes.push(filme);
+
+  document.querySelector("form").submit;
+})
+
 for (i in filmesPosters) {
   document.write("<div style='display: inline-block; margin-right: 20px; text-align: center;'>");
   document.write("<img src=" + filmesPosters[i] + ">");

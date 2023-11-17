@@ -12,6 +12,36 @@ body {
     text-align: center;
     padding: 20px;
   }
+
+  .botoes-pag {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    justify-items: flex-start;
+  }
+
+  .botoes {
+    height: 20px;
+    border: 1px solid #3E3E3E;
+    border-radius: 3px;
+  }
+
+  #enviar {
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;;
+    color: #ffffff;
+    width: 60px;
+    height: 30px;
+    background-color: red;
+    border: none;
+    margin-bottom: 5px;
+    border-radius: 3px;
+  }
+
+  #enviar:hover {
+    background-color: #732828;
+    border: none;
+    cursor: pointer;
+  }
   
   .page-title {
     color: #ffffff;
@@ -55,6 +85,6 @@ body {
   }
   
   img:hover {
-    transform: scale(1.16);
+    transform: scale(1.15);
   }
   
