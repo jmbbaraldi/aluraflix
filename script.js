@@ -4,6 +4,22 @@ function limparTextBoxes() {
   document.getElementById("inputTrailer").value ="";
 }
 
+//Verificador de imagem e formato
+function isImage(url) {
+  // Lista de extensões de imagens permitidas
+  const allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+  // Use uma expressão regular para extrair a extensão do arquivo
+  const extensionMatch = url.match(/\.([a-zA-Z0-9]+)$/);
+
+  if (extensionMatch) {
+    const extension = extensionMatch[1].toLowerCase();
+    return allowedExtensions.includes(extension);
+  }
+
+  return false;
+}
+
 var filmesPosters = ["https://br.web.img2.acsta.net/r_1280_720/img/86/51/86513ed90118b9d738e65f498c31cfdd.jpg", // Clube da Luta
 "https://i.pinimg.com/originals/d3/4b/a0/d34ba07d38260fda50cae8fd1fd4fef9.jpg", //Django Livre
 "https://upload.wikimedia.org/wikipedia/pt/8/8b/Superbad_Poster.png", // Superbad
@@ -55,14 +71,17 @@ document.getElementById("enviar").addEventListener("click", function() {
   var linkUsuario = document.getElementById("inputLink").value;
   var trailerUsuario = document.getElementById("inputTrailer").value;
 
-  if (filmeUsuario && linkUsuario && trailerUsuario) {
+  if (filmeUsuario && linkUsuario && trailerUsuario && isImage(linkUsuario)) {
   filmesPosters.push(linkUsuario);
   filmesNomes.push(filmeUsuario);
   filmesTrailers.push(trailerUsuario);
-  }
 
   renderizarFilmes(); //Atualiza a exibição
   limparTextBoxes();
+  }
+  else {
+    alert("Insira um formato de imagem válido! (jpg, jpeg, png)")
+  }
 })
 
 //Printa os filmes adicionados pelo usuário
