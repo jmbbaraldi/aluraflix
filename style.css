@@ -86,5 +86,6 @@ body {
   
   img:hover {
     transform: scale(1.13);
+    cursor: pointer;
   }
   
