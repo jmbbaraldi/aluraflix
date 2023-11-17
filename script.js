@@ -1,3 +1,8 @@
+function limparTextBoxes() {
+  document.getElementById("inputTitulo").value = "";
+  document.getElementById("inputLink").value = "";
+}
+
 var filmesPosters = ["https://br.web.img2.acsta.net/r_1280_720/img/86/51/86513ed90118b9d738e65f498c31cfdd.jpg", 
 "https://i.pinimg.com/originals/d3/4b/a0/d34ba07d38260fda50cae8fd1fd4fef9.jpg", 
 "https://upload.wikimedia.org/wikipedia/pt/8/8b/Superbad_Poster.png", 
@@ -13,22 +18,66 @@ var filmesPosters = ["https://br.web.img2.acsta.net/r_1280_720/img/86/51/86513ed
 "https://m.media-amazon.com/images/I/71NPmBOdq7L._AC_UF894,1000_QL80_.jpg",
 "https://br.web.img2.acsta.net/c_310_420/pictures/16/04/16/00/25/503456.jpg"];
 
-var filmesNomes = ["Clube da Luta", "Django Livre", "Superbad", "O Jogo da Imitação", "Truque de Mestre", "O Lobo de Wallstreet",
-"O Código Da Vinci", "Harry Potter", "Interstellar", "Oppenheimer", "Senhor dos Anéis", "Batman", "Blade Runner 2049", "Cãos de Guerra"]
+var filmesNomes = ["Clube da Luta", 
+"Django Livre", 
+"Superbad", 
+"O Jogo da Imitação", 
+"Truque de Mestre", 
+"O Lobo de Wallstreet",
+"O Código Da Vinci", 
+"Harry Potter", 
+"Interstellar", 
+"Oppenheimer", 
+"Senhor dos Anéis", 
+"Batman", 
+"Blade Runner 2049", 
+"Cãos de Guerra"]
 
+//Adiciona os filmes do usuário aos vetores de filmes existentes.
 document.getElementById("enviar").addEventListener("click", function() {
-  var filme = document.getElementById("inputTitulo").value;
-  var link = document.getElementById("inputLink").value;
+  var filmeUsuario = document.getElementById("inputTitulo").value;
+  var linkUsuario = document.getElementById("inputLink").value;
 
-  filmesPosters.push(link);
-  filmesNomes.push(filme);
+  if (filmeUsuario && linkUsuario) {
+  filmesPosters.push(linkUsuario);
+  filmesNomes.push(filmeUsuario);
+  }
 
-  document.querySelector("form").submit;
+  renderizarFilmes();
+  limparTextBoxes();
 })
 
-for (i in filmesPosters) {
-  document.write("<div style='display: inline-block; margin-right: 20px; text-align: center;'>");
-  document.write("<img src=" + filmesPosters[i] + ">");
-  document.write("<p style='color: #ffffff; font-family: 'Roboto Mono'>" + filmesNomes[i]);
-  document.write("</div>");
+//Printa os filmes adicionados pelo usuário
+function renderizarFilmes() {
+  var filmesContainer = document.getElementById("filmesContainer"); // div do html
+
+  if (!filmesContainer) {
+    console.error("Elemento 'filmesContainer' não encontrado.");
+    return;
+  }
+
+  filmesContainer.innerHTML= "";
+
+  //Adiciona os filmes do usuário ao print da tela
+  for (var i in filmesPosters) {
+    var filmeDiv = document.createElement("div"); //Variáveis auxiliares
+    filmeDiv.style.display = "inline-block";
+    filmeDiv.style.marginRight = "20px";
+    filmeDiv.style.textAlign = "center";
+
+    var filmePrintImg = document.createElement("img"); //Variáveis auxiliares
+    filmePrintImg.src = filmesPosters[i];
+
+    var filmePrintNome = document.createElement("p"); //Variáveis auxiliares
+    filmePrintNome.style.color = "#FFFFFF";
+    filmePrintNome.style.fontFamily = "Roboto Mono";
+    filmePrintNome.textContent =  filmesNomes[i];
+    
+    filmeDiv.appendChild(filmePrintImg);
+    filmeDiv.appendChild(filmePrintNome);
+
+    filmesContainer.appendChild(filmeDiv);
+  }
 }
+
+renderizarFilmes();

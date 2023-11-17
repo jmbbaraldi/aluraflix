@@ -33,7 +33,7 @@ body {
     height: 30px;
     background-color: red;
     border: none;
-    margin-bottom: 5px;
+    margin-bottom:25px;
     border-radius: 3px;
   }
 
@@ -85,6 +85,6 @@ body {
   }
   
   img:hover {
-    transform: scale(1.15);
+    transform: scale(1.13);
   }
   
